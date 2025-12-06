@@ -11,8 +11,6 @@ void main() {
         i.makeAllMovements();
 
         IO.println("Veces que quedó en cero: " + i.getZeroCounter1());
-        // 6350 too low
-        // 7426 too high
         IO.println("Pasos por cero: " + i.getZeroCounter2());
 
     } catch (IOException e) {

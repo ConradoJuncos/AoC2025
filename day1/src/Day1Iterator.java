@@ -19,67 +19,51 @@ public class Day1Iterator {
         }
     }
 
-//    public void move(String movement) {
-//
-//        switch (direction) {
-//            case "L":
-//                IO.println("DebugL: " + zeroCounter2);
-//                int past_position = position;
-//                position -= moves;
-//                while (position < 0) {
-//                    position = position + 100;
-//                    if (past_position != 0) {
-//                        zeroCounter2 += 1;
-//                    }
-//                }
-//                break;
-//            case "R":
-//                position += moves;
-//                while (position > 99) {
-//                    if (position != 0) {
-//                        zeroCounter2 += 1;
-//                    }
-//                    position = position - 100;
-//                }
-//                break;
-//        }
-//    }
-
     public void makeMove(String movementString) {
         String direction = movementString.substring(0, 1);
-        int moves = Integer.parseInt(movementString.substring(1));
+        int steps = Integer.parseInt(movementString.substring(1));
 
         switch (direction) {
-
             case "L":
-                int lastPosition = position;
-                IO.println("DL: " + zeroCounter2);
-                position -= moves;
-                if (position == 0) {
-                    zeroCounter2 += 1;
-                }
-                while (position < 0) {
-                    position += 100;
-                    if (lastPosition != 0) {
-                        zeroCounter2 += 1;
-                    }
-                    IO.println("DL: " + zeroCounter2);
-                }
-                IO.println("DL: " + zeroCounter2);
+                makeLeftMove(steps);
                 break;
-
             case "R":
-                IO.println("DR: " + zeroCounter2);
-                position += moves;
-                while (position > 99) {
-                    position -= 100;
-                    zeroCounter2 += 1;
-                    IO.println("DR: " + zeroCounter2);
-                }
-                IO.println("DR: " + zeroCounter2);
+                makeRightMove(steps);
                 break;
         }
+        if (position == 0) {
+            zeroCounter1 += 1;
+        }
+    }
 
+    public void makeLeftMove(int steps) {
+        int lastPosition = position;
+        position -= steps;
+        while (position < 0) {
+            position += 100;
+            if (lastPosition != 0) {
+                zeroCounter2 += 1;
+            }
+            lastPosition = 1;
+        }
+        if (position == 0) {
+            zeroCounter2 += 1;
+        }
+    }
+
+    public void makeRightMove(int steps) {
+        position += steps;
+        if (position == 0) {
+            zeroCounter2 += 1;
+        }
+//        while (position > 99) {
+//            position -= 100;
+//            zeroCounter2 += 1;
+//        }
+        int resto = position % 100;
+        int div = position / 100;
+        position = resto;
+        zeroCounter2 += div;
     }
 
     public int getZeroCounter1() {
