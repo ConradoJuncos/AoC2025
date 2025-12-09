@@ -5,9 +5,9 @@ void main() {
 
         long sum = 0;
         for (String i : instructions) {
-            String[] qwe = i.split("-");
-            List<String> lis = Arrays.stream(qwe).toList();
-            Intervalo intervalo = new Intervalo(Long.parseLong(lis.get(0)), Long.parseLong(lis.get(1)));
+            String[] ranges = i.split("-");
+            List<String> rangesList = Arrays.stream(ranges).toList();
+            Intervalo intervalo = new Intervalo(Long.parseLong(rangesList.get(0)), Long.parseLong(rangesList.get(1)));
             sum += intervalo.getSumIdInvalidos();
         }
         IO.println("Suma: " + sum);
