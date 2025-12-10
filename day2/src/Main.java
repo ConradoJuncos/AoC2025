@@ -1,5 +1,5 @@
 void main(String[] args) {
-    try (FileReader f = new FileReader("day2/src/resources/input")) {
+    try (BufferedReader f = new BufferedReader(new FileReader("day2/src/resources/input"))) {
         String instructionsString = f.readAllAsString();
         String[] instructions = instructionsString.split(",");
 
