@@ -41,9 +41,11 @@ public class Day1Iterator {
         position -= steps;
         while (position < 0) {
             position += 100;
+            // Si la posicion anterior es 0, no suma la primera vuelta porque contabilizaria doble
             if (lastPosition != 0) {
                 zeroCounter2 += 1;
             }
+            // Setea lastPosition como 1 (distinto de 0) para que pueda entrar al if de arriba la proxima vez
             lastPosition = 1;
         }
         if (position == 0) {

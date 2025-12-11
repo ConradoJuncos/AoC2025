@@ -2,7 +2,7 @@ void main() {
     // Main: el main
     // InstructionList: Guarda todos los movimientos que se deben realizar
     // Day1Iterator: Calcula la posicion del dial de la caja fuerte (cosas del enunciado)
-    try (BufferedReader f = new BufferedReader(new FileReader("day1/src/resources/input"))) {
+    try (BufferedReader f = new BufferedReader(new FileReader("resources/input1"))) {
         List<String> instructions = f.readAllLines();
         InstructionsList list = new InstructionsList(instructions);
 
