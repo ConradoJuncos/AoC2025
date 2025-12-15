@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BatteryBank {
-    List<Integer> batteries = new ArrayList<>();
+    final List<Integer> batteries = new ArrayList<>();
 
     public BatteryBank(String line) {
         for (int i = 0; i < line.length(); i++) {
@@ -10,23 +10,23 @@ public class BatteryBank {
         }
     }
 
-    public int getMaxJoltage() {
-        int firstHighestNumber = -1;
-        int firstHighestNumberPosition = -1;
-        int secondHighestNumber = -1;
+    public Long nDigitMaxJoltage(int digits) {
+        StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < batteries.toArray().length - 1; i++) {
-            if (batteries.get(i) > firstHighestNumber) {
-                firstHighestNumber = batteries.get(i);
-                firstHighestNumberPosition = i;
-            }
-        }
-        for (int i = firstHighestNumberPosition + 1; i < batteries.toArray().length; i++) {
-            if (batteries.get(i) > secondHighestNumber) {
-                secondHighestNumber = batteries.get(i);
-            }
-        }
+        int latestAddedPosition = -1;
+        for (int i = 0; i < digits; i++) {
+            int maxValue = -1;
 
-        return (Integer.parseInt(String.valueOf(firstHighestNumber) + String.valueOf(secondHighestNumber)));
+            // Busca el numero mas grande en el rango de digitos no agregados todavía
+            for (int j = latestAddedPosition + 1; j <= batteries.toArray().length - digits + i; j++) {
+                if (batteries.get(j) > maxValue) {
+                    maxValue = batteries.get(j);
+                    latestAddedPosition = j;
+                }
+            }
+
+            result.append(maxValue);
+        }
+        return Long.parseLong(result.toString());
     }
 }
