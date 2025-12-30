@@ -1,4 +1,4 @@
-public class Range {
+public class Range implements Comparable<Range> {
     long start;
     long end;
 
@@ -14,5 +14,24 @@ public class Range {
 
     public long getEnd() {
         return end;
+    }
+
+    public void setEnd(long end) {
+        this.end = end;
+    }
+
+    @Override
+    public int compareTo(Range o) {
+        return Long.compare(this.getStart(), o.getStart());
+    }
+
+    @Override
+    public String toString() {
+//        return "Range: " +
+//                "start=" +
+//                start +
+//                ", end=" +
+//                end;
+        return start+"|"+end;
     }
 }
